@@ -2225,6 +2225,7 @@ int EGS_ChamberApplication::simulateSingleShower() {
     the_egsvr->nbr_split = csplit;
     current_case = source->getNextParticle(rndm,p.q,p.latch,p.E,p.wt,x,u);
     //egsInformation("Got particle: q=%d E=%g wt=%g latch=%d x=(%g,%g,%g) u=(%g,%g,%g)\n",p.q,p.E,p.wt,p.latch,x.x,x.y,x.z,u.x,u.y,u.z);
+    the_extra_stack->nbr_splitting[0] = 0;
     int err = startNewShower(); if( err ) return err;
     //*HB_start************************
     //isocenter positioning uncertainty
