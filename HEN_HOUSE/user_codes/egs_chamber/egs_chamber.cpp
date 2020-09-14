@@ -113,7 +113,6 @@ extern __extc__ void F77_OBJ(photo,PHOTO)();
 // Extra stack to hold variance reduction data per particle
 struct EGS_ExtraStack {
     int nbr_splitting[MXSTACK];
-    int nbr_splittingI;
 };
 
 extern __extc__ struct EGS_ExtraStack F77_OBJ_(extra_stack,EXTRA_STACK);
