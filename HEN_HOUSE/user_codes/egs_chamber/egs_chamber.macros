@@ -67,6 +67,23 @@ REPLACE {$TRANSFERPROPERTIESTO#FROM#;} WITH {
     nbr_splitting{P1}=nbr_splitting{P2};
 };
 
+REPLACE {$EXCHANGE-STACK(#,#);} WITH {
+;
+FDUMMY = U({P2});     U({P2})     = U({P1});     U({P1})     = FDUMMY;
+FDUMMY = V({P2});     V({P2})     = V({P1});     V({P1})     = FDUMMY;
+FDUMMY = W({P2});     W({P2})     = W({P1});     W({P1})     = FDUMMY;
+FDUMMY = E({P2});     E({P2})     = E({P1});     E({P1})     = FDUMMY;
+FDUMMY = WT({P2});    WT({P2})    = WT({P1});    WT({P1})    = FDUMMY;
+IDUMMY = IQ({P2});    IQ({P2})    = IQ({P1});    IQ({P1})    = IDUMMY;
+"LATCH IS NOW STANDARD"
+IDUMMY = LATCH({P2}); LATCH({P2}) = LATCH({P1}); LATCH({P1}) = IDUMMY;
+"add this for the extra stack
+IDUMMY = nbr_splitting{P2};
+nbr_splitting{P2}=nbr_splitting{P1};
+nbr_splitting{P1}=IDUMMY;
+}
+;
+
 subroutine do_rayleigh;
 implicit none;
 $declare_max_medium;
